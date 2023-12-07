@@ -1,5 +1,6 @@
 using Application;
 using Authorization;
+using Authorization.Middlewares;
 using Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -31,6 +32,10 @@ var app = builder.Build(); {
     app.UseHttpsRedirection();
     app.UseAuthentication();
     app.UseAuthorization();
+    
+    // use transaction middleware
+    app.UseTransactionMiddleware();
+    
     app.MapControllers();
     app.Run();
 }

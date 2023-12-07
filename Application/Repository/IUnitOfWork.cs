@@ -18,4 +18,7 @@ public interface IUnitOfWork : IDisposable{
    public IBaseRepository<Booking> Bookings { get; }
    int Commit();
    Task<int> CommitAsync(CancellationToken cancellationToken = default);
+   public Task BeginTransactionAsync();
+   public Task CommitTransactionAsync();
+   public Task RollbackTransactionAsync();
 }
