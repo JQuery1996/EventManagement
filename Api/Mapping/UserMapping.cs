@@ -34,5 +34,12 @@ public class UserMapping : Profile{
             .ForCtorParam("UserName", opt => opt.MapFrom(src => src.UserName))
             .ForCtorParam("Email", opt => opt.MapFrom(src => src.Email))
             .ForCtorParam("PhoneNumber", opt => opt.MapFrom(src => src.PhoneNumber));
+
+
+        CreateMap<UserResult, UserResponse>()
+            .ForCtorParam("Id", opt => opt.MapFrom(src => src.Id))
+            .ForCtorParam("UserName", opt => opt.MapFrom(src => src.UserName))
+            .ForCtorParam("Email", opt => opt.MapFrom(src => src.Email))
+            .ForCtorParam("PhoneNumber", opt => opt.MapFrom(src => src.PhoneNumber));
     }
 }

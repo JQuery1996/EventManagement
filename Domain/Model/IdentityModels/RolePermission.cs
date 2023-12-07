@@ -1,5 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
-
+﻿
 namespace Domain.Model.IdentityModels; 
 
 public class RolePermission {

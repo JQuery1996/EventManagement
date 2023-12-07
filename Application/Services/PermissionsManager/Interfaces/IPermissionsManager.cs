@@ -1,5 +1,4 @@
 using Application.Services.PermissionsManager.Common;
-using Domain.Model;
 using ErrorOr;
 
 namespace Application.Services.PermissionsManager.Interfaces; 

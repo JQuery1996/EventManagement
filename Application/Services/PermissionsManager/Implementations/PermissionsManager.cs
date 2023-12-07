@@ -3,7 +3,6 @@ using Application.Repository;
 using Application.Services.PermissionsManager.Common;
 using Application.Services.PermissionsManager.Interfaces;
 using AutoMapper;
-using Domain.Model;
 using ErrorOr;
 using Microsoft.EntityFrameworkCore;
 

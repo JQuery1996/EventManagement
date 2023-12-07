@@ -12,7 +12,6 @@ namespace Infrastructure.Authentication;
 public class JwtTokenGenerator(
     IOptions<JwtSettings> options,
     UserManager<User> userManager,
-    RoleManager<Role> roleManager,
         IDateTimeProvider dateTimeProvider) : IJwtTokenGenerator {
     private readonly JwtSettings _jwtSettings = options.Value; 
     public async Task<string> GenerateToken(User user) {

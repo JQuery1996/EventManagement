@@ -1,11 +1,7 @@
 ﻿using System.Security.Claims;
-using Application.Errors;
 using Domain.Constants;
-using Domain.Model;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.IdentityModel.JsonWebTokens;
-using Microsoft.IdentityModel.Tokens;
 
 namespace Infrastructure.Authentication;
 

@@ -45,7 +45,7 @@ public class UnitOfWork(
         GC.SuppressFinalize(this);
     }
 
-    private bool _disposed = false;
+    private bool _disposed;
 
     private void Dispose(bool disposing) {
         if (!_disposed && disposing) context.Dispose();

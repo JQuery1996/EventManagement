@@ -1,10 +1,6 @@
 using Application;
-using Application.Repository;
 using Authorization;
-using Authorization.Seeder;
-using Domain.Model.IdentityModels;
 using Infrastructure;
-using Microsoft.AspNetCore.Identity;
 
 var builder = WebApplication.CreateBuilder(args);
 {
@@ -27,8 +23,8 @@ var app = builder.Build(); {
         app.UseSwaggerUI();
 
 
-        var scope = app.Services.CreateScope();
-        var services = scope.ServiceProvider;
+        // var scope = app.Services.CreateScope();
+        // var services = scope.ServiceProvider;
         // new RoleSeeder(services.GetRequiredService<RoleManager<Role>>()).Seed().Wait();
         // new PermissionSeeder(services.GetRequiredService<IUnitOfWork>()).Seed().Wait();
     }

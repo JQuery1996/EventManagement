@@ -1,5 +1,4 @@
-﻿using System.Reflection;
-using Domain.Model.IdentityModels;
+﻿using Domain.Model.IdentityModels;
 using Infrastructure.Data;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.OpenApi.Models;

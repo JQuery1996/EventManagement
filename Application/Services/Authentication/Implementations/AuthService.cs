@@ -28,7 +28,7 @@ public class AuthService(
     }
 
     public async Task<ErrorOr<AuthenticationResult>> Register(RegisterCommand command) {
-        if (await unitOfWork.UserContainer.FindByNameAsync(command.UserName) is { } user)
+        if (await unitOfWork.UserContainer.FindByNameAsync(command.UserName) is not null)
             return ApplicationErrors.Authentication.Duplicate;
         
         var createdUser = new User {

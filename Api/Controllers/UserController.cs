@@ -2,6 +2,7 @@
 using Application.Services.Users.Common;
 using AutoMapper;
 using Contract.Requests.Users;
+using Contract.Responses.Users;
 using Domain.Constants;
 using Infrastructure.Authentication;
 using Microsoft.AspNetCore.Mvc;
@@ -20,7 +21,7 @@ public class UserController(
    [ProducesResponseType(StatusCodes.Status401Unauthorized)]
    [ProducesResponseType(StatusCodes.Status403Forbidden)]
    public async Task<IActionResult> All() {
-      return Ok(await serviceContainer.UserService.GetUsersAsync());
+      return Ok(mapper.Map<IEnumerable<UserResponse>>(await serviceContainer.UserService.GetUsersAsync()));
    }
 
 
@@ -33,7 +34,7 @@ public class UserController(
    public async Task<IActionResult> Get([FromRoute] string id) {
       if (await serviceContainer.UserService.GetUserByIdAsync(id) is not { } user)
          return NoContent();
-      return Ok(user);
+      return Ok(mapper.Map<UserResponse>(user));
    }
 
 
@@ -48,13 +49,13 @@ public class UserController(
          = await serviceContainer.UserService.FilterUsersAsync(mapper.Map<FilterUsersQuery>(request));
       if (result.IsNullOrEmpty())
          return NoContent();
-      return Ok(result);
+      return Ok(mapper.Map<IEnumerable<UserResponse>>(result));
    }
 
 
    [HttpPut("{id}")]
    [HasPermission(Permissions.EditUser)]
-   [ProducesResponseType(StatusCodes.Status200OK)]
+   [ProducesResponseType(StatusCodes.Status204NoContent)]
    [ProducesResponseType(StatusCodes.Status401Unauthorized)]
    [ProducesResponseType(StatusCodes.Status403Forbidden)]
    public async Task<IActionResult> Edit([FromRoute] string id, [FromBody] EditUserRequest request) {
@@ -67,9 +68,11 @@ public class UserController(
    [HasPermission(Permissions.RemoveUser)]
    [ProducesResponseType(StatusCodes.Status204NoContent)]
    [ProducesResponseType(StatusCodes.Status404NotFound)]
+   [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+   [ProducesResponseType(StatusCodes.Status403Forbidden)]
    public async Task<IActionResult> Remove(string id) {
       var removeResult = await serviceContainer.UserService.RemoveUserAsync(id);
-      return removeResult.Match(result => NoContent(), Problem);
+      return removeResult.Match(_ => NoContent(), Problem);
    }
    
 }

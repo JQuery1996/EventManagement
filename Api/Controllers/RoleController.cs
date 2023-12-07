@@ -1,5 +1,4 @@
-﻿using Application.Repository;
-using Application.Services;
+﻿using Application.Services;
 using Domain.Constants;
 using Infrastructure.Authentication;
 using Microsoft.AspNetCore.Mvc;
@@ -18,6 +17,6 @@ public class RoleController(ServiceContainer serviceContainer) : ApiController{
         if (user is null)
             return Unauthorized();
         var result = await serviceContainer.RoleService.AssignRoleToUserAsync(user, role);
-        return result.Match(res => NoContent(), Problem);
+        return result.Match(_ => NoContent(), Problem);
     }
 }

@@ -1,5 +1,4 @@
-﻿using Application.Repository;
-using Application.Services;
+﻿using Application.Services;
 using Application.Services.Events.Common;
 using AutoMapper;
 using Contract.Requests.Events;
@@ -49,7 +48,7 @@ public class EventController(
 
         return CreatedAtAction(
             "Get",
-            new { Id = createResult.Id },
+            new { createResult.Id },
             createResult);
     }
     
@@ -80,6 +79,6 @@ public class EventController(
         var removeResult =
             await serviceContainer.EventService.RemoveEventAsync(id, authenticatedUser);
 
-        return removeResult.Match(result => NoContent(), Problem);
+        return removeResult.Match(_ => NoContent(), Problem);
     }
 }

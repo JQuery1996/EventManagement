@@ -43,6 +43,6 @@ public class PermissionController(
    public async Task<IActionResult> AddPermissionToRole(AssignPermissionToRoleRequest request) {
       var addPermissionToRoleResult 
          = await serviceContainer.PermissionsManager.AssignPermissionToRole(mapper.Map<AssignPermissionToRoleCommand>(request));
-      return addPermissionToRoleResult.Match(result => NoContent(), Problem);
+      return addPermissionToRoleResult.Match(_ => NoContent(), Problem);
    }
 }

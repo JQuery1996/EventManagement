@@ -1,5 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-using Domain.Model.BookingModels;
+﻿using Domain.Model.BookingModels;
 using Domain.Model.IdentityModels;
 
 namespace Domain.Model.EventModels; 

@@ -1,5 +1,4 @@
 ﻿using Application.Errors;
-using Application.Interfaces;
 using Application.Repository;
 using Application.Services.Events.Common;
 using Application.Services.Events.Interfaces;
@@ -12,8 +11,8 @@ namespace Application.Services.Events.Implementations;
 
 public class EventService(
     IUnitOfWork unitOfWork, 
-    IMapper mapper,
-    IDateTimeProvider dateTimeProvider) : IEventService {
+    IMapper mapper
+    ) : IEventService {
     public async Task<EventResult> CreateEventAsync(CreateEventCommand command, User user) {
         var createEvent = mapper.Map<Event>(command);
         // attach user to the event 

@@ -1,6 +1,5 @@
 ﻿using System.Linq.Expressions;
 using Application.Repository;
-using AutoMapper;
 using Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 
@@ -170,4 +169,4 @@ public class BaseRepository<TEntity, TKey >(ApplicationDbContext context)
 
 public class BaseRepository<TEntity>(ApplicationDbContext context) 
     : BaseRepository<TEntity, int>(context), IBaseRepository<TEntity>
-    where TEntity : class {}
+    where TEntity : class;

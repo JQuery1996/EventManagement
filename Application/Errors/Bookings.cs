@@ -1,5 +1,4 @@
 ﻿using ErrorOr;
-using Microsoft.EntityFrameworkCore;
 
 namespace Application.Errors; 
 

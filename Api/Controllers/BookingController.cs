@@ -27,7 +27,7 @@ public class BookingController(
       var createResult = await serviceContainer.BookingService.BookUserForEvent(
          mapper.Map<BookForEventCommand>(request), authenticatedUser);
 
-      return createResult.Match(result => Ok(), Problem);
+      return createResult.Match(_ => Ok(), Problem);
    }
 
    [HttpGet]
@@ -75,6 +75,6 @@ public class BookingController(
 
       var cancelResult = 
          await serviceContainer.BookingService.CancelBooking(eventId: id, user: authenticatedUser);
-      return cancelResult.Match(result => NoContent(), Problem);
+      return cancelResult.Match(_ => NoContent(), Problem);
    }
 }

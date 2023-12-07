@@ -1,5 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-
+﻿
 namespace Domain.Model.IdentityModels; 
 
 public class Permission {
