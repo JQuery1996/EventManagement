@@ -12,32 +12,33 @@ This project is built using .NET Core 8.
    - [Register](#register)
    
 2. [User Controller](#user-controller)
-   - [Get All Users](#1-get-all-users)
-   - [Get User by ID](#2-get-user-by-id)
-   - [Filter Users](#3-filter-users)
-   - [Edit User](#4-edit-user)
-   - [Remove User](#5-remove-user)
+   - [Get All Users](#get-all-users)
+   - [Get User by ID](#get-user-by-id)
+   - [Filter Users](#filter-users)
+   - [Edit User](#edit-user)
+   - [Remove User](#remove-user)
 
 3. [Role Controller](#role-controller)
-   - [Assign Role to User](#1-assign-role-to-user)
+   - [Assign Role to User](#assign-role-to-user)
 
 4. [Permission Controller](#permission-controller)
-   - [List All Permissions](#1-list-all-permissions)
-   - [List Permissions for Role](#2-list-permissions-for-role)
-   - [Add Permission to Role](#3-add-permission-to-role)
+   - [List All Permissions](#list-all-permissions)
+   - [List Permissions for Role](#list-permissions-for-role)
+   - [Add Permission to Role](#add-permission-to-role)
 
 5. [Event Controller](#event-controller)
-   - [Get All Events](#1-get-all-events)
-   - [Get Event by ID](#2-get-event-by-id)
-   - [Create Event](#3-create-event)
-   - [Update Event](#4-update-event)
-   - [Remove Event](#5-remove-event)
+   - [Get All Events](#get-all-events)
+   - [Get Event by ID](#get-event-by-id)
+   - [Create Event](#create-event)
+   - [Update Event](#update-event)
+   - [Remove Event](#remove-event)
+   - [Event Bookings](#event-bookings)
 
 6. [Booking Controller](#booking-controller)
-   - [Create Booking](#1-create-booking)
-   - [Get Booking](#2-get-booking)
-   - [Edit Booking](#3-edit-booking)
-   - [Cancel Booking](#4-cancel-booking)
+   - [Create Booking](#create-booking)
+   - [Get Bookings](#get-bookings)
+   - [Edit Booking](#edit-booking)
+   - [Cancel Booking](#cancel-booking)
 
 7. [License](#license)
 
@@ -47,8 +48,7 @@ The `AuthenticationController` handles authentication-related endpoints.
 
 ### Endpoints
 
-#### Login
-
+### <div id="login" style="background-color:#384967; border: 1px solid #3498db; padding: 10px; border-radius: 5px;">Login</div>
 **Endpoint:** `POST /api/auth/login`
 
 **Description:** Authenticate a user and generate an authentication token.
@@ -73,8 +73,7 @@ The `AuthenticationController` handles authentication-related endpoints.
   "Token": "authenticationToken"
 }
 ```
-#### Register
-
+### <div id="register" style="background-color:#384967; border: 1px solid #3498db; padding: 10px; border-radius: 5px;">Register</div>
 **Endpoint:** `POST /api/auth/register`
 
 **Description: Register a new user.
@@ -105,7 +104,7 @@ The `AuthenticationController` handles authentication-related endpoints.
 
 The `UserController` manages user-related operations.
 
-### 1. Get All Users
+### <div id="get-all-users" style="background-color:#384967; border: 1px solid #3498db; padding: 10px; border-radius: 5px;">1. Get All Users</div>
 
 - **Endpoint:** `GET /api/user`
 - **Description:** Retrieve a list of all users.
@@ -115,8 +114,8 @@ The `UserController` manages user-related operations.
   - Status 200 OK: Returns a list of user details.
   - Status 401 Unauthorized: User is not authenticated.
   - Status 403 Forbidden: User lacks the necessary permissions.
-### 2. Get User by ID
 
+### <div id="get-user-by-id" style="background-color:#384967; border: 1px solid #3498db; padding: 10px; border-radius: 5px;">2. Get User By Id</div>
 - **Endpoint:** `GET /api/user/{id}`
 - **Description:** Retrieve details for a specific user by ID.
 - **Permissions:**
@@ -128,7 +127,8 @@ The `UserController` manages user-related operations.
   - Status 204 No Content: User with the specified ID not found.
   - Status 401 Unauthorized: User is not authenticated.
   - Status 403 Forbidden: User lacks the necessary permissions.
-### 3. Filter Users
+  
+### <div id="filter-users" style="background-color:#384967; border: 1px solid #3498db; padding: 10px; border-radius: 5px;">3. Filter Users</div>
 
 - **Endpoint:** `POST /api/user/filter`
 - **Description:** Filter users based on specified criteria.
@@ -148,7 +148,7 @@ The `UserController` manages user-related operations.
   - Status 401 Unauthorized: User is not authenticated.
   - Status 403 Forbidden: User lacks the necessary permissions.
 
-### 4. Edit User
+### <div id="edit-user" style="background-color:#384967; border: 1px solid #3498db; padding: 10px; border-radius: 5px;">4. Edit User</div>
 
 - **Endpoint:** `Put /api/user/{id}`
 - **Description:** Edit details for a specific user by ID.
@@ -169,7 +169,8 @@ The `UserController` manages user-related operations.
   - Status 401 Unauthorized: User is not authenticated.
   - Status 403 Forbidden: User lacks the necessary permissions.
 
-### 5. Remove User
+
+### <div id="remove-user" style="background-color:#384967; border: 1px solid #3498db; padding: 10px; border-radius: 5px;">5. Remove User</div>
 
 - **Endpoint:** `DELETE /api/user/{id}`
 - **Description:** Remove a user by ID. 
@@ -187,7 +188,8 @@ The `UserController` manages user-related operations.
 
 The `RoleController` manages role-related operations.
 
-### 1. Assign Role to User
+### <div id="assign-role-to-user" style="background-color:#384967; border: 1px solid #3498db; padding: 10px; border-radius: 5px;">1. Assign Role To User</div>
+
 - **Endpoint:** `POST /api/role/assign`
 - **Description:** Assign a role to the authenticated user.
 - **Permissions:**
@@ -203,7 +205,7 @@ The `RoleController` manages role-related operations.
 
 The `PermissionController` manages permission-related operations.
 
-### 1. List All Permissions
+### <div id="list-all-permissions" style="background-color:#384967; border: 1px solid #3498db; padding: 10px; border-radius: 5px;">1. List All Permissions</div>
 
 - **Endpoint:** `GET /api/permission/Permissions`
 - **Description:** Retrieve a list of all permissions.
@@ -213,7 +215,9 @@ The `PermissionController` manages permission-related operations.
   - Status 200 OK: Returns a list of permission details.
   - Status 401 Unauthorized: User is not authenticated.
   - Status 403 Forbidden: User lacks the necessary permissions. 
-### 2. List Permissions for Role
+
+### <div id="list-permissions-for-role" style="background-color:#384967; border: 1px solid #3498db; padding: 10px; border-radius: 5px;">2. List Permissions For Role</div>
+
 - **Endpoint:** `GET /api/permission/RolePermissions`
 - **Description:** Retrieve a list of permissions assigned to a specific role.
 - **Permissions:**
@@ -225,7 +229,8 @@ The `PermissionController` manages permission-related operations.
   - Status 401 Unauthorized: User is not authenticated.
   - Status 403 Forbidden: User lacks the necessary permissions.
   
-### 3. Add Permission to Role
+### <div id="add-permission-to-role" style="background-color:#384967; border: 1px solid #3498db; padding: 10px; border-radius: 5px;">3. Add Permission To Role</div>
+
 - **Endpoint:** `POST /api/permission`
 - **Description:** Assign a permission to a role.
 - **Permissions:**
@@ -246,7 +251,8 @@ The `PermissionController` manages permission-related operations.
 
 The `EventController` manages event-related operations.
 
-### 1. Get All Events
+### <div id="get-all-events" style="background-color:#384967; border: 1px solid #3498db; padding: 10px; border-radius: 5px;">1. Get All Events</div>
+
 - **Endpoint:** `GET /api/event`
 - **Description:** Retrieve a list of all available events.
 - **Permissions:**
@@ -255,7 +261,8 @@ The `EventController` manages event-related operations.
   - Status 200 OK: Returns a list of event details.
   - Status 401 Unauthorized: User is not authenticated.
   - Status 403 Forbidden: User lacks the necessary permissions.
-### 2. Get Event by ID
+
+### <div id="get-event-by-id" style="background-color:#384967; border: 1px solid #3498db; padding: 10px; border-radius: 5px;">2. Get Event By Id</div>
 
 - **Endpoint:** `GET /api/event/{id:int}`
 - **Description:** Retrieve details for a specific event by ID.
@@ -268,7 +275,9 @@ The `EventController` manages event-related operations.
   - Status 404 Not Found: Event with the specified ID not found.
   - Status 401 Unauthorized: User is not authenticated.
   - Status 403 Forbidden: User lacks the necessary permissions.
-### 3. Create Event
+
+### <div id="create-event" style="background-color:#384967; border: 1px solid #3498db; padding: 10px; border-radius: 5px;">3. Create Event</div>
+
 - **Endpoint:** `POST /api/event`
 - **Description:** Create a new event.
 - **Permissions:**
@@ -290,7 +299,8 @@ The `EventController` manages event-related operations.
   - Status 401 Unauthorized: User is not authenticated.
   - Status 403 Forbidden: User lacks the necessary permissions.
 
-### 4. Update Event
+### <div id="update-event" style="background-color:#384967; border: 1px solid #3498db; padding: 10px; border-radius: 5px;">4. Update Event</div>
+
 - **Endpoint:** `PUT /api/event/{id:int}`
 - **Description:**  Update details for a specific event by ID
 - **Permissions:**
@@ -314,7 +324,8 @@ The `EventController` manages event-related operations.
   - Status 401 Unauthorized: User is not authenticated.
   - Status 403 Forbidden: User lacks the necessary permissions.
 
-### 5. Remove Event
+### <div id="remove-event" style="background-color:#384967; border: 1px solid #3498db; padding: 10px; border-radius: 5px;">5. Remove Event</div>
+
 - **Endpoint:** `DELETE /api/event/{id:int}`
 - **Description:**  Remove a specific event by ID.
 - **Permissions:**
@@ -325,12 +336,24 @@ The `EventController` manages event-related operations.
   - Status 204 No Content: Event successfully removed.
   - Status 401 Unauthorized: User is not authenticated.
   - Status 403 Forbidden: User lacks the necessary permissions.
- 
+
+### <div id="event-bookings" style="background-color:#384967; border: 1px solid #3498db; padding: 10px; border-radius: 5px;">6. Event Bookings</div>
+
+- **Endpoint:** `GET /api/event/{id:int}/bookings`
+- **Description:** Retrieve all bookings associated with a specific event by ID.
+- **Permissions:**
+  - [x] ViewBookings
+- **Parameters:**
+  - `id`: Event ID.
+- **Response:**
+  - Status 200 OK: Returns a list of booking details for the specified event.
+  - Status 401 Unauthorized: User is not authenticated.
+  - Status 403 Forbidden: User lacks the necessary permissions.
 ## Booking Controller
 
 The `BookingController` manages booking-related operations.
 
-### 1. Create Booking
+### <div id="create-booking" style="background-color:#384967; border: 1px solid #3498db; padding: 10px; border-radius: 5px;">1. Create Booking</div>
 
 - **Endpoint:** `POST /api/booking`
 - **Description:** Create a booking for a specific event.
@@ -347,7 +370,7 @@ The `BookingController` manages booking-related operations.
   - Status 200 OK: Booking successfully created.
   - Status 401 Unauthorized: User is not authenticated.
 
-### 2. Get Booking
+### <div id="get-bookings" style="background-color:#384967; border: 1px solid #3498db; padding: 10px; border-radius: 5px;">1. Get Bookings</div>
 
 - **Endpoint:** `GET /api/booking`
 - **Description:** Retrieve bookings for the authenticated user.
@@ -358,7 +381,7 @@ The `BookingController` manages booking-related operations.
   - Status 204 No Content: No bookings found for the user.
   - Status 401 Unauthorized: User is not authenticated.
 
-### 3. Edit Booking
+### <div id="edit-booking" style="background-color:#384967; border: 1px solid #3498db; padding: 10px; border-radius: 5px;">3. Edit Booking</div>
 
 - **Endpoint:** `PUT /api/booking/{id:int}`
 - **Description:** Update details for a specific booking by ID. 
@@ -376,7 +399,7 @@ The `BookingController` manages booking-related operations.
   - Status 200 OK: Booking details successfully updated.
   - Status 401 Unauthorized: User is not authenticated.
  
-### 4. Cancel Booking
+### <div id="cancel-booking" style="background-color:#384967; border: 1px solid #3498db; padding: 10px; border-radius: 5px;">4. Cancel Booking</div>
 
   - **Endpoint:** `DELETE /api/booking/{id:int}`
 - **Description:** Cancel a specific booking by ID.
