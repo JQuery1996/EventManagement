@@ -19,6 +19,7 @@ This project is built using .NET Core 8.
    - [Remove User](#remove-user)
 
 3. [Role Controller](#role-controller)
+   - [Get All Roles](#get-all-roles)
    - [Assign Role to User](#assign-role-to-user)
 
 4. [Permission Controller](#permission-controller)
