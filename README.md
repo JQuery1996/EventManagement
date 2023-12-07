@@ -188,7 +188,31 @@ The `UserController` manages user-related operations.
 
 The `RoleController` manages role-related operations.
 
-### <div id="assign-role-to-user" style="background-color:#384967; border: 1px solid #3498db; padding: 10px; border-radius: 5px;">1. Assign Role To User</div>
+### <div id="get-all-roles" style="background-color:#384967; border: 1px solid #3498db; padding: 10px; border-radius: 5px;">1. Get All Roles</div>
+- **Endpoint:** `GET /api/role`
+- **Description:** Retrieve a list of all roles.
+- **Permissions:**
+  - [x] ViewRoles
+- **Response:**
+  - Status 200 OK: Returns a list of role details.
+  - Status 401 Unauthorized: User is not authenticated.
+  - Status 403 Forbidden: User lacks the necessary permissions. 
+#### Example Response
+```json
+[
+  {
+    "Id": "roleId1",
+    "Name": "RoleName1",
+    "NormalizedName": "RoleName1Normalized"
+  },
+  {
+    "Id": "roleId2",
+    "Name": "RoleName2",
+    "NormalizedName": "RoleName2Normalized"
+  }
+]
+```
+### <div id="assign-role-to-user" style="background-color:#384967; border: 1px solid #3498db; padding: 10px; border-radius: 5px;">2. Assign Role To User</div>
 
 - **Endpoint:** `POST /api/role/assign`
 - **Description:** Assign a role to the authenticated user.
