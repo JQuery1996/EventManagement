@@ -1,5 +1,6 @@
 ﻿using Application.Errors;
 using Application.Repository;
+using Application.Services.Bookings.Common;
 using Application.Services.Events.Common;
 using Application.Services.Events.Interfaces;
 using AutoMapper;
@@ -65,5 +66,20 @@ public class EventService(
         unitOfWork.Events.Remove(deleteEvent);
         await unitOfWork.CommitAsync();
         return Result.Deleted;
+    }
+
+    public async Task<ErrorOr<IEnumerable<BookingResult>>> GetEventBookingsAsync(int id, User user) {
+        // first check if the event exits
+        if (await unitOfWork.Events.FindAsync(
+                predicate: e => e.Id == id, 
+                includeProperties: e => e.Bookings) is not { } targetEvent)
+            return ApplicationErrors.Events.NotFound;
+
+        if (targetEvent.UserId != user.Id)
+            return ApplicationErrors.Events.UnAuthorized;
+        
+        // return list of all bookings inside this event.
+        return ErrorOrFactory.From(mapper.Map<IEnumerable<BookingResult>>(targetEvent.Bookings));
+
     }
 }

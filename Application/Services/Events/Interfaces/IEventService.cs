@@ -1,4 +1,5 @@
-﻿using Application.Services.Events.Common;
+﻿using Application.Services.Bookings.Common;
+using Application.Services.Events.Common;
 using Domain.Model.IdentityModels;
 using ErrorOr;
 
@@ -10,4 +11,5 @@ public interface IEventService {
    public Task<EventResult?> GetEventAsync(int id);
    public Task<ErrorOr<EventResult>> EditEventAsync(int id, EditEventCommand command, User user);
    public Task<ErrorOr<Deleted>> RemoveEventAsync(int id, User user);
+   public Task<ErrorOr<IEnumerable<BookingResult>>> GetEventBookingsAsync(int id, User user);
 }

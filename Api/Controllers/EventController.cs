@@ -2,9 +2,11 @@
 using Application.Services.Events.Common;
 using AutoMapper;
 using Contract.Requests.Events;
+using Contract.Responses.Bookings;
 using Domain.Constants;
 using Infrastructure.Authentication;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Data.SqlClient;
 
 namespace Authorization.Controllers; 
 
@@ -80,5 +82,25 @@ public class EventController(
             await serviceContainer.EventService.RemoveEventAsync(id, authenticatedUser);
 
         return removeResult.Match(_ => NoContent(), Problem);
+    }
+
+    [HttpGet("{id:int}/bookings")]
+    [HasPermission(Permissions.ViewBookings)]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+    [ProducesResponseType(StatusCodes.Status403Forbidden)]
+    public async Task<IActionResult> GetEventBookings(int id) {
+        var authenticatedUser 
+            = await serviceContainer.AuthenticatedService.GetAuthenticatedUser(this.User);
+
+        if (authenticatedUser is null)
+            return Unauthorized();
+
+        var eventBookingsResult 
+            = await serviceContainer.EventService.GetEventBookingsAsync(id, authenticatedUser);
+
+        return eventBookingsResult.Match(
+            result => Ok(mapper.Map<IEnumerable<BookingResponse>>(result))
+            , Problem);
     }
 }
