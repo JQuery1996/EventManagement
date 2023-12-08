@@ -1,9 +1,9 @@
-﻿# Event Management System
+﻿# Event Management System :rocket:
 ___
 
 A web-based application that allows users to create, manage, and participate in events.
 
-## .NET Version
+## .NET Version :fire:
 This project is built using .NET Core 8.
 ## Table of Contents
 
